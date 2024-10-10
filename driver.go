@@ -22,9 +22,9 @@ func init() {
 
 var DefaultMigrationsTable = "schema_migrations"
 var (
-	ErrDatabaseDirty  = fmt.Errorf("database is dirty")
-	ErrNilConfig      = fmt.Errorf("no config")
-	ErrNoDatabaseName = fmt.Errorf("no database name")
+	//ErrDatabaseDirty  = fmt.Errorf("database is dirty")
+	ErrNilConfig = fmt.Errorf("no config")
+	//ErrNoDatabaseName = fmt.Errorf("no database name")
 )
 
 type Config struct {
@@ -181,10 +181,10 @@ func (s *SqlitexDriver) Version() (int, bool, error) {
 		} else {
 			dirty = false
 		}
-		fmt.Printf("ROW: %d,%v\n", version, dirty)
+
 		return nil
 	}); err != nil {
-		fmt.Printf("ERR: %#v", err)
+
 		return 0, false, database.Error{
 			Line:    1,
 			Query:   []byte(query),
